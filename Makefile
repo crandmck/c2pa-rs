@@ -83,8 +83,8 @@ doc:
 # Builds a set of test images using the make_tests example
 # Outputs to release/test-images
 images:
-	cargo run --release --example make_tests
+	cargo run --features="file_io" --release --example make_tests
 
 # Runs the client example using test image and output to target/tmp/client.jpg
 client:
-	cargo run --example client sdk/tests/fixtures/ca.jpg target/tmp/client.jpg
+	cargo run --features="file_io" --example client sdk/tests/fixtures/ca.jpg target/tmp/client.jpg
