@@ -36,7 +36,7 @@ use signer::get_test_signer;
 
 // define the command line options
 #[derive(Debug, StructOpt)]
-#[structopt(author = "Adobe", about = "Tool for displaying and creating C2PA manifests",setting = structopt::clap::AppSettings::ColoredHelp)]
+#[structopt(author = "Adobe", about = "Tool for displaying and creating C2PA manifests",version=c2pa::VERSION, setting = structopt::clap::AppSettings::ColoredHelp)]
 struct CliArgs {
     #[structopt(parse(from_os_str))]
     #[structopt(short = "o", long = "output", help = "path to output file")]
