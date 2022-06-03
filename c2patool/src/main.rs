@@ -259,7 +259,7 @@ fn main() -> Result<()> {
     let mut config = args.config;
     let mut base_dir = PathBuf::from(".");
 
-    if let Some(path) = args.path.clone() {
+    if let Some(path) = &args.path {
         if !path.exists() {
             println!("File not found {:?}", path);
             exit(1);
@@ -270,6 +270,7 @@ fn main() -> Result<()> {
         match extension {
             "jpg" | "jpeg" | "png" | "c2pa" => {
                 report_from_path(&path, args.detailed);
+                return Ok(());
             }
             "json" => {
                 // file paths in Config are relative to the json file
@@ -293,6 +294,8 @@ fn main() -> Result<()> {
             args.output.as_deref(),
             args.detailed,
         )?;
+    } else {
+        println!("No action given")
     }
     Ok(())
 }
